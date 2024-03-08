@@ -1,6 +1,7 @@
 // src/index.js
 import express, { Express, Request, Response } from "express";
 import multer from "multer";
+import { chatgpt } from "./chat-gpt";
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
@@ -31,3 +32,5 @@ app.post(`/${ROUTES.IMAGES}`, upload.array("image"), (req, res) => {
   console.log(req.files);
   res.send("hello world");
 });
+
+chatgpt();

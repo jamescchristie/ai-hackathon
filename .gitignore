@@ -1,2 +1,5 @@
 /bin/
 /node_modules/
+.DS_Store
+backend/dist
+backend/node_modules/

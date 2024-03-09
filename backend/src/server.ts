@@ -1,7 +1,7 @@
 // src/index.js
 import express, { Express, Request, Response } from "express";
 import multer from "multer";
-import App from "./application/index";
+import App, { UserInputs } from "./application/index";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -30,15 +30,16 @@ app.listen(port, () => {
 
 // respond with "hello world" when a GET request is made to the homepage
 app.post(`/${ROUTES.IMAGES}`, upload.single("image"), async (req, res) => {
+  const userPrefs = req.body as UserInputs;
   const filePath = req.file?.path;
   if (!filePath) {
     throw new Error("No file path found");
   }
 
   const analysis = await App.analyseImage(filePath);
-  await App.getStyleSuggestions(analysis);
-  const csv = await App.analyseCsv();
-  const pickedStyles = await App.pickStylesFromCSV(csv);
-
+  // await App.getStyleSuggestions(analysis);
+  // const csv = await App.analyseCsv();
+  // await App.pickStylesFromCSV(csv);
+  const pickedStyles = await App.curateLook(analysis, userPrefs);
   res.send(pickedStyles);
 });

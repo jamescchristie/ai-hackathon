@@ -1,7 +1,14 @@
 import { ChatGPTLib } from "../chat-gpt";
 import fs from "fs";
 import Prompts from "../../prompts.json";
-import { fileFromPath } from "openai";
+
+export type UserInputs = {
+  style: string;
+  color: string;
+  gender: string;
+  price: string;
+  size: string;
+};
 
 export default {
   analyseImage: async (imagePath: string): Promise<string> => {
@@ -49,6 +56,19 @@ export default {
     const response = await ChatGPTLib.useText([
       { type: "text", text: picKStylePrompt.prompt },
       { type: "text", text: csv },
+    ]);
+    return response.choices[0].message.content!;
+  },
+
+  curateLook: async (imageAnalysis: string, userInput: UserInputs) => {
+    const succinct = Prompts.succint_prompt;
+    console.log(`Making request, with prompt: \n${succinct.description}`);
+    const csvAsString = csvToString("../database/inventory.csv");
+    const response = await ChatGPTLib.useText([
+      { type: "text", text: succinct.prompt },
+      { type: "text", text: `CSV: ${csvAsString}` },
+      { type: "text", text: `User Inputs: ${JSON.stringify(userInput)}` },
+      { type: "text", text: `Description: ${imageAnalysis}` },
     ]);
     return response.choices[0].message.content!;
   },

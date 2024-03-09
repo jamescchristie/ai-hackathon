@@ -17,6 +17,11 @@
   },
   "generate_outfits_addressing_user_concerns": {
     "description": "Curate outfits based on the user's specified concerns and preferences outlined in their initial prompt.",
-    "prompt": "Based on the user's initial prompt, which outlines specific concerns and preferences, curate a selection of outfits that directly address these requirements. Focus on creating combinations that meet the specified criteria for color, style, season, and gender, ensuring that each outfit is tailored to the user's expressed needs and preferences."
+    "prompt": "Based on the user's input, provided, which outlines specific concerns and preferences, curate a selection of outfits that directly address these requirements. Focus on creating combinations that meet the specified criteria for color, style, season, and gender, ensuring that each outfit is tailored to the user's expressed needs and preferences.  Return the response in a structured JSON format"
+  },
+  "succint_prompt": {
+    "description": "trying to tie everything together",
+    "type": "system",
+    "prompt": "You are a virtual stylist. Use the supplied CSV as a catalog of clothing and recommend new styles based on the description provided and additional user inputs supplied. Focus on creating combinations that meet the specified criteria for color, style, season, and gender, ensuring that each outfit is tailored to the user's expressed needs and preferences.  Return the response in a structured JSON format."
   }
 }

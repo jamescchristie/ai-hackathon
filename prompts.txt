@@ -1,0 +1,24 @@
+there are multiple images provided with varieties of clothing articles. in addition these are the color,style,season and gender preferences the user wants.  generate detailed product descriptions of only clothing articles in each image. the product descriptions must be factual, concise. no ornamental language. only factual labels and attributes. for eg: color, material, fit etc
+
+using the above product descriptions, generate three suggestions of an appropriate fashion styles that encapsulates these clothing articles.
+
+here is a csv of clothing products with various fields with their values. aggregate all the field values for a product and categorize what styles it could belong to. 
+
+use the products in the csv to generate outfits that would match the style of the fashion style suggestions.
+
+using the user prompt generate different outfits that you address their concerns. 
+For generating detailed product descriptions from images:
+"Analyze each provided image containing various clothing items. Identify and describe each clothing article by focusing on factual attributes such as color, material, fit, and any other visible features. Avoid using descriptive or ornamental language. The descriptions should align with the user's specified preferences for color, style, season, and gender. Ensure each description is concise and factual, providing a clear overview of each item's key characteristics."
+
+For generating fashion style suggestions based on product descriptions:
+"Based on the detailed product descriptions derived from the images, identify and recommend three fashion styles that best encapsulate the characteristics of these clothing articles. Consider how the attributes of each item—such as color, material, and fit—align with specific fashion styles, and suggest styles that harmonize with the overall collection of items."
+
+For aggregating CSV data to categorize product styles:
+"Examine the provided CSV file containing data on clothing products, including various attributes for each item. Aggregate the information for each product, focusing on fields such as color, material, style, and season. Based on these aggregated attributes, categorize each product into one or more fashion styles, ensuring that the categorization reflects the combined attributes accurately."
+
+
+For generating outfits based on CSV data and style suggestions:
+"Utilize the categorized clothing products from the CSV file to assemble outfits that correspond with the previously suggested fashion styles. Match the products' attributes—such as color, material, and overall style—to create cohesive outfits that embody the essence of each suggested fashion style, ensuring that each outfit is a representative example of its respective style."
+
+For generating outfits addressing user concerns based on prompts:
+"Based on the user's initial prompt, which outlines specific concerns and preferences, curate a selection of outfits that directly address these requirements. Focus on creating combinations that meet the specified criteria for color, style, season, and gender, ensuring that each outfit is tailored to the user's expressed needs and preferences."

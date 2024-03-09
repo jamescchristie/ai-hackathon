@@ -1,7 +1,8 @@
 // src/index.js
 import express, { Express, Request, Response } from "express";
 import multer from "multer";
-import { chatgpt } from "./chat-gpt";
+import App from "./application/index";
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
@@ -28,9 +29,16 @@ app.listen(port, () => {
 });
 
 // respond with "hello world" when a GET request is made to the homepage
-app.post(`/${ROUTES.IMAGES}`, upload.array("image"), (req, res) => {
-  console.log(req.files);
-  res.send("hello world");
-});
+app.post(`/${ROUTES.IMAGES}`, upload.single("image"), async (req, res) => {
+  const filePath = req.file?.path;
+  if (!filePath) {
+    throw new Error("No file path found");
+  }
 
-chatgpt();
+  const analysis = await App.analyseImage(filePath);
+  await App.getStyleSuggestions(analysis);
+  const csv = await App.analyseCsv();
+  const pickedStyles = await App.pickStylesFromCSV(csv);
+
+  res.send(pickedStyles);
+});

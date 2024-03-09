@@ -57,7 +57,11 @@ p {
     font-size: 0.9rem;
     cursor: pointer;
 }
-
+.gender-button.selected,
+.size-button.selected {
+  background-color: #4CAF50; /* A different color to indicate selection */
+  color: white;
+}
 .gender-button:last-child,
 .size-button:last-child {
     margin-right: 0;

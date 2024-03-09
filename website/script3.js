@@ -11,9 +11,9 @@
 //     });
 // });
 
-function init() {
+// function init() {
   document.addEventListener("DOMContentLoaded", () => {
-    const imageInput = document.getElementById("images");
+    const imageInput = document.getElementById("image-upload");
     const imagePreviewContainer = document.getElementById("imagePreview");
 
     imageInput.addEventListener("change", function () {
@@ -39,15 +39,28 @@ function init() {
         }
       }
     });
-    const buttons = document.querySelectorAll(".gender-button, .size-button");
+    // const buttons = document.querySelectorAll(".gender-button, .size-button");
 
-    buttons.forEach((button) => {
+    // buttons.forEach((button) => {
+    //   button.addEventListener("click", (e) => {
+    //     // Remove active from all buttons
+    //     buttons.forEach((btn) => btn.classList.remove("active"));
+    //     // Add active to clicked button
+    //     e.target.classList.add("active");
+    //   });
+    // });
+
+    const genderButtons = Array.from(document.getElementsByClassName("gender-button"));
+    const sizeButtons = Array.from(document.getElementsByClassName("size-button"));
+    const allButtons = genderButtons.concat(sizeButtons);
+  
+    allButtons.forEach((button) => {
       button.addEventListener("click", (e) => {
-        // Remove active from all buttons
-        buttons.forEach((btn) => btn.classList.remove("active"));
-        // Add active to clicked button
-        e.target.classList.add("active");
+        // Remove 'active' class from all buttons
+        allButtons.forEach((btn) => btn.classList.remove("active"));
+        // Add 'active' class to clicked button
+        e.currentTarget.classList.add("active");
       });
     });
   });
-}
+

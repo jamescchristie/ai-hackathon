@@ -70,9 +70,18 @@ export default {
       { type: "text", text: `User Inputs: ${JSON.stringify(userInput)}` },
       { type: "text", text: `Description: ${imageAnalysis}` },
     ]);
-    return response.choices[0].message.content!;
+    const rawResponse = response.choices[0].message.content!;
+    const responseJSON = extractJSONFromString(rawResponse);
+
+    return responseJSON;
   },
 };
+
+function extractJSONFromString(text: string) {
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+  return text.substring(firstBrace - 1, lastBrace);
+}
 
 // function to encode file data to base64 encoded string
 function base64_encode(file: string) {

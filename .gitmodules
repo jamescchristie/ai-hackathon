@@ -1,0 +1,3 @@
+[submodule "styail"]
+	path = styail
+	url = https://github.com/orientearlgrey/styail.git
